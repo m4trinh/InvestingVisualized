@@ -1,0 +1,40 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar a, .navbar a:hover { color: inherit; text-decoration: inherit; } 
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.react-datepicker-wrapper {
+  display:block !important;
+}
+
+.center-all {
+  display: table-cell;
+  width: 100vw;
+  height: 80vh;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.primary-color {
+  background-color: #d0def5;
+}
+
+.secondary-color {
+  background-color: #e1e9f5;
+}
+
+.minWidth200 {
+  min-width: 200px;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
