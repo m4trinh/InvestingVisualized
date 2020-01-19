@@ -3,7 +3,7 @@ import Toolbar from '../GenericComponents/Toolbar'
 import Definition from '../GenericComponents/Definition'
 import TFSAVisualized from '../Visualized/Accounts/TFSA/TFSAVisualized'
 import RESPVisualized from '../Visualized/Accounts/RESP/RESPVisualized'
-import { CESG_INFO_URL, CESG_LIMIT, CESG_ABBREV, RESP_LIMIT, EAP_ABBREV } from '../Visualized/Accounts/RESP/RESPConstants'
+import { CESG_INFO_URL, CESG_LIMIT, CESG_ABBREV, RESP_CONTRIBUTION_LIMIT, EAP_ABBREV } from '../Visualized/Accounts/RESP/RESPConstants'
 import VisualizationWrapper from '../GenericComponents/VisualizationWrapper'
 import { SessionState } from '../State'
 
@@ -37,7 +37,7 @@ const ACCOUNT_TYPES = {
         <div>
             The purpose of this account to help pay for your child's post secondary education.
             <ul>
-                <li>You can only contribute a maximum of ${RESP_LIMIT} for each child.</li>
+                <li>You can only contribute a maximum of ${RESP_CONTRIBUTION_LIMIT} for each child.</li>
                 <li>The government will provide a 20% grant on a maximum if $2500 per year. (<a href={CESG_INFO_URL}>{CESG_ABBREV}</a>)</li>
                 <ul>
                     <li>Contributing $2500 annually will get your child $500 annually! (Maximum of ${CESG_LIMIT}) </li>

@@ -4,7 +4,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContai
 import { updateLocalStorage, getLocalStorage } from '../../../../UsefulFunctions'
 import { FeeActionModel, FeeGraphPoint } from './FeesModel';
 import { SessionState } from '../../../../State';
-const classNames = require('classnames');
+import classNames from 'classnames';
 
 const FeesVisualized = () => {
 
