@@ -3,7 +3,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContai
 import { updateLocalStorage, getLocalStorage } from '../../../UsefulFunctions'
 import { GICActionModel, GICGraphPoint } from './GICModel';
 import { SessionState } from '../../../State';
-import classNames from 'classnames';
+const classNames = require('classnames');
 
 const GICVisualized = () => {
 
