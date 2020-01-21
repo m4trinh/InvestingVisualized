@@ -1,6 +1,6 @@
-import { AccountAction } from "./ActionModel";
+import { AccountAction } from './ActionModel';
 
 export interface AccountInfo {
-    actions: AccountAction[],
-    yearBorn: number,
-};
+	actions: AccountAction[];
+	yearBorn: number;
+}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import MaterialTable from "material-table";
+import React, { useState, useEffect } from 'react';
+import MaterialTable from 'material-table';
 import {
 	LineChart,
 	Line,
@@ -7,10 +7,14 @@ import {
 	XAxis,
 	YAxis,
 	Tooltip,
-	ResponsiveContainer
-} from "recharts";
-import { getLocalStorage, updateLocalStorage, getCurrentYear } from "../../UsefulFunctions";
-import { AccountGraphAction } from "./ActionModel";
+	ResponsiveContainer,
+} from 'recharts';
+import {
+	getLocalStorage,
+	updateLocalStorage,
+	getCurrentYear,
+} from '../../UsefulFunctions';
+import { AccountGraphAction } from './ActionModel';
 
 interface Props {
 	renderHeader: Function;
@@ -22,8 +26,8 @@ interface Props {
 	defaultInfo: any; // TODO: make a type
 }
 
-const AbstractAccountVisualized = (props:Props) => {
-	const { 
+const AbstractAccountVisualized = (props: Props) => {
+	const {
 		renderHeader,
 		getYearsLookUpObj,
 		calcInitContribRoom,
@@ -34,7 +38,7 @@ const AbstractAccountVisualized = (props:Props) => {
 
 	const updateGraph = () => {
 		setGraphActions(getGraphPoints(actions, contributionRoom));
-	}
+	};
 	const [info, setInfo] = useState(
 		getLocalStorage(sessionStateInfo, defaultInfo)
 	);
@@ -63,57 +67,59 @@ const AbstractAccountVisualized = (props:Props) => {
 	const [graphActions, setGraphActions] = useState(tempGraphActions);
 
 	const renderTooltip = ({ active, payload, label }) => {
-        if (active) {
-            return (
-              <div>
-                <h3>{label}</h3>
-                <p>{`Contribution Room Left:$${payload[0].value}`}</p>
-              </div>
-            );
-        }
-	}
+		if (active) {
+			return (
+				<div>
+					<h3>{label}</h3>
+					<p>{`Contribution Room Left:$${payload[0].value}`}</p>
+				</div>
+			);
+		}
+	};
 
-    const renderContributionRoomLeft = () => {
-        if (graphActions.length === 0) {
-            return;
-        }
-        const contributionRoom = [...graphActions].splice(-1)[0].amount;
-        let returnContent = `You have $${contributionRoom} left to contribute.`;
-        if (contributionRoom < 0) {
-            returnContent = `You have over contributed $${contributionRoom*-1}! The CRA will come for you!`
-        }
-        return (
-            <div className="textAlignCenter">
-                {returnContent}
-            </div>
-        )
-	}
+	const renderContributionRoomLeft = () => {
+		if (graphActions.length === 0) {
+			return;
+		}
+		const contributionRoom = [...graphActions].splice(-1)[0].amount;
+		let returnContent = `You have $${contributionRoom} left to contribute.`;
+		if (contributionRoom < 0) {
+			returnContent = `You have over contributed $${contributionRoom *
+				-1}! The CRA will come for you!`;
+		}
+		return <div className="textAlignCenter">{returnContent}</div>;
+	};
 
 	const Columns = [
 		{
-			title: "Withdrawal?",
-			field: "withdraw",
-			type: "boolean",
-			initialEditValue: false
+			title: 'Withdrawal?',
+			field: 'withdraw',
+			type: 'boolean',
+			initialEditValue: false,
 		},
-		{ title: "Amount ($)", field: "amount", type: "numeric", initialEditValue: 0 },
-		{ title: "Title", field: "title", initialEditValue: "Contribution" },
 		{
-			title: "Year",
-			field: "year",
-			type: "numeric",
+			title: 'Amount ($)',
+			field: 'amount',
+			type: 'numeric',
+			initialEditValue: 0,
+		},
+		{ title: 'Title', field: 'title', initialEditValue: 'Contribution' },
+		{
+			title: 'Year',
+			field: 'year',
+			type: 'numeric',
 			initialEditValue: getCurrentYear(),
-			lookup: getYearsLookUpObj(yearBorn)
-		}
+			lookup: getYearsLookUpObj(yearBorn),
+		},
 	];
-	
-	const castActionTypes = (action) => {
+
+	const castActionTypes = action => {
 		return {
 			...action,
 			year: parseInt(action.year),
 			amount: parseInt(action.amount),
-		}
-	}
+		};
+	};
 
 	return (
 		<>
@@ -126,8 +132,8 @@ const AbstractAccountVisualized = (props:Props) => {
 					columns={Columns}
 					data={actions.slice().reverse()}
 					options={{
-						addRowPosition: "first",
-						exportButton: true
+						addRowPosition: 'first',
+						exportButton: true,
 					}}
 					editable={{
 						onRowAdd: newAction => {
@@ -160,14 +166,14 @@ const AbstractAccountVisualized = (props:Props) => {
 									setActions(actions.filter((row, index) => index !== deleteIndex));
 									resolve();
 								}, 600);
-							})
+							}),
 					}}
 				/>
 			</div>
-			<hr/>
+			<hr />
 			{renderContributionRoomLeft()}
-			<hr/>
-			<div style={{ width: "100%", height: 300 }}>
+			<hr />
+			<div style={{ width: '100%', height: 300 }}>
 				<ResponsiveContainer>
 					<LineChart data={graphActions}>
 						<Line type="monotone" dataKey="amount" stroke="#8884d8" />
@@ -180,6 +186,6 @@ const AbstractAccountVisualized = (props:Props) => {
 			</div>
 		</>
 	);
-}
+};
 
 export default AbstractAccountVisualized;
