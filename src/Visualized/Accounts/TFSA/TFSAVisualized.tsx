@@ -58,6 +58,7 @@ const TFSAVisualized = () => {
 			2018: 5500,
 			2019: 6000,
 			2020: 6000,
+			2021: 6000,
 		};
 
 		let cumulativeYearlyTFSAAllowance = {};
